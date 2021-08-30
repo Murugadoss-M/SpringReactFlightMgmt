@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class FlightMgmtApiGatewayApplication {
+public class FlightMgmtDiscoveryServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FlightMgmtApiGatewayApplication.class, args);
+		SpringApplication.run(FlightMgmtDiscoveryServerApplication.class, args);
 	}
 
 }

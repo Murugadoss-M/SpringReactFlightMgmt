@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mmdoss</groupId>
-	<artifactId>flight-mgmt-api-gateway</artifactId>
+	<artifactId>flight-mgmt-discovery-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>flight-mgmt-api-gateway</name>
-	<description>Flight Management Search Microservice</description>
+	<name>flight-mgmt-discovery-server</name>
+	<description>Flight Management Discovery Server</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
@@ -25,16 +25,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
