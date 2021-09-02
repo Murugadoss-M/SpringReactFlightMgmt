@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Flight {
 	@Id
 	private String flight_id;
-	private String airways_id;
+	private String airways;
 	private LocalDate date;
 	private String from;
 	private String to;
@@ -23,7 +23,7 @@ public class Flight {
 	public Flight(String flight_id, String airways_id, LocalDate date, String from, String to, int seats, double cost) {
 		super();
 		this.flight_id = flight_id;
-		this.airways_id = airways_id;
+		this.airways = airways_id;
 		this.date = date;
 		this.from = from;
 		this.to = to;
@@ -46,11 +46,11 @@ public class Flight {
 	}
 
 	public String getAirways_id() {
-		return airways_id;
+		return airways;
 	}
 
 	public void setAirways_id(String airways_id) {
-		this.airways_id = airways_id;
+		this.airways = airways_id;
 	}
 
 	public LocalDate getDate() {
@@ -96,7 +96,7 @@ public class Flight {
 	@Override
 	public String toString() {
 		return String.format("Flight [flight_id=%s, airways_id=%s, date=%s, from=%s, to=%s, seats=%s, cost=%s]",
-				flight_id, airways_id, date, from, to, seats, cost);
+				flight_id, airways, date, from, to, seats, cost);
 	}
 
 }
