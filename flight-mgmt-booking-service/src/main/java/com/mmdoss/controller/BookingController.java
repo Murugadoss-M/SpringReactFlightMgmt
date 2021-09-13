@@ -1,6 +1,7 @@
 package com.mmdoss.controller;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,7 +74,7 @@ public class BookingController {
 		Optional<Flight> optional = flightRespository.findById(id);
 		Flight flight = optional.get();
 
-		booking.setDate(flight.getDate());
+		booking.setDate(LocalDate.now());
 
 		booking.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 		Passenger[] passenger = new Passenger[passengers.size()];
