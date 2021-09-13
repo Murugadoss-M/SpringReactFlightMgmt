@@ -6,6 +6,7 @@ public class Passenger {
 	private int age;
 	private boolean isCheckedIn;
 	private int seatNo;
+	private boolean isCancelled;
 	public Passenger() {
 	}
 	public Passenger(String name, char gender, int age) {
@@ -13,6 +14,7 @@ public class Passenger {
 		this.gender = gender;
 		this.age = age;
 		isCheckedIn=false;
+		isCancelled=false;
 	}
 	public String getName() {
 		return name;
@@ -44,10 +46,16 @@ public class Passenger {
 	public void setSeatNo(int seatNo) {
 		this.seatNo = seatNo;
 	}
+	public boolean isCancelled() {
+		return isCancelled;
+	}
+	public void setCancelled(boolean isCancelled) {
+		this.isCancelled = isCancelled;
+	}
 	@Override
 	public String toString() {
-		return String.format("Passenger [name=%s, gender=%s, age=%s, isCheckedIn=%s, seatNo=%s]", name,
-				gender, age, isCheckedIn, seatNo);
+		return String.format("Passenger [name=%s, gender=%s, age=%s, isCheckedIn=%s, seatNo=%s, isCancelled=%s]", name,
+				gender, age, isCheckedIn, seatNo, isCancelled);
 	}
 	
 }

@@ -16,7 +16,6 @@ public class Booking {
 	private LocalDate date;
 	private Passenger[] passengers;
 	private double price;
-	private boolean isCancelled;
 
 	public Booking() {
 	}
@@ -25,15 +24,6 @@ public class Booking {
 		this.username = username;
 		this.flight_id = flight_id;
 		this.passengers = passengers;
-		isCancelled=false;
-	}
-
-	public boolean isCancelled() {
-		return isCancelled;
-	}
-
-	public void setCancelled(boolean isCancelled) {
-		this.isCancelled = isCancelled;
 	}
 
 	public String getBooking_id() {
@@ -86,9 +76,8 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return String.format(
-				"Booking [booking_id=%s, username=%s, flight_id=%s, date=%s, passengers=%s, price=%s, isCancelled=%s]",
-				booking_id, username, flight_id, date, Arrays.toString(passengers), price, isCancelled);
+		return String.format("Booking [booking_id=%s, username=%s, flight_id=%s, date=%s, passengers=%s, price=%s]",
+				booking_id, username, flight_id, date, Arrays.toString(passengers), price);
 	}
 
 }
