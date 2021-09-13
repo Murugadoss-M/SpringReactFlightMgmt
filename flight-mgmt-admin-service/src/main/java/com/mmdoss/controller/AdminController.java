@@ -1,5 +1,7 @@
 package com.mmdoss.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,56 +28,73 @@ public class AdminController {
 	@Autowired
 	FlightRepository flightRepository;
 
-
 	@Autowired
 	AirportRepository airportRepository;
-	
+
 	@Autowired
 	private BookingRepository bookingRepository;
 
 	@GetMapping("/view/flight")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public List<Flight> viewFlights() {
-		System.out.println("Flights");
 		return flightRepository.findAll();
 	}
 
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/add/flight")
-	public void addFlight(@RequestBody Flight flight) {
+	public List<Flight> addFlight(@RequestParam("id")String id,@RequestParam("airways")String airways,
+			@RequestParam("from")String from,@RequestParam("to")String to,@RequestParam("date")String date,
+			@RequestParam("seats")String seat,@RequestParam("cost")String cost) {
+		
+		Flight flight=new Flight();
+		
+		flight.setFlight_id(id);
+		flight.setAirways(airways);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		flight.setDate(LocalDate.parse(date, formatter));
+		
+		flight.setFrom(from);
+		flight.setTo(to);
+		
+		flight.setSeats(Integer.parseInt(seat));
+		flight.setCost(Integer.parseInt(cost));
+		
+		
 		flightRepository.save(flight);
+		return viewFlights();
 	}
 
 	@PostMapping("/delete/flight")
 	@CrossOrigin(origins = "http://localhost:3000")
-	public void deleteFlight(@RequestParam("id") String id) {
+	public List<Flight> deleteFlight(@RequestParam("id") String id) {
 		flightRepository.deleteById(id);
+		return viewFlights();
 	}
-	
-	
 
 	@GetMapping("/view/airport")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public List<Airport> viewAirports() {
-		System.out.println("Flights");
 		return airportRepository.findAll();
 	}
 
 	@PostMapping("/add/airport")
 	@CrossOrigin(origins = "http://localhost:3000")
-	public void addAirport(@RequestBody Airport airport) {
-		airportRepository.save(airport);
+	public List<Airport> addAirport(@RequestParam("id") String id, @RequestParam("city") String city) {
+		airportRepository.save(new Airport(id, city));
+		return viewAirports();
 	}
 
 	@PostMapping("/delete/airport")
 	@CrossOrigin(origins = "http://localhost:3000")
-	public void deleteAirport(@RequestParam("id") String id) {
+	public List<Airport> deleteAirport(@RequestParam("id") String id) {
 		airportRepository.deleteById(id);
+		return viewAirports();
 	}
+
 	@GetMapping("/view/booking")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public List<Booking> viewBookings() {
-		System.out.println("Flights");
 		return bookingRepository.findAll();
 	}
 
@@ -87,8 +106,5 @@ public class AdminController {
 		booking.setCancelled(true);
 		bookingRepository.save(booking);
 	}
-	
-	
-	
-	
+
 }

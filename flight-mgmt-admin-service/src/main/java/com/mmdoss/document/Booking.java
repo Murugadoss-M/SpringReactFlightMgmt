@@ -15,7 +15,7 @@ public class Booking {
 	private String flight_id;
 	private LocalDate date;
 	private Passenger[] passengers;
-	private double price;
+	private int price;
 	private boolean isCancelled;
 
 	public Booking() {
@@ -76,11 +76,11 @@ public class Booking {
 		this.passengers = passengers;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 

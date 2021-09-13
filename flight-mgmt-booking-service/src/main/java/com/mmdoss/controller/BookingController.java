@@ -86,11 +86,17 @@ public class BookingController {
 		booking.setCancelled(false);
 		return booking;
 	}
+	
+	@PostMapping("/passengers")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public Passenger[] getPassengers() {
+		return booking.getPassengers();
+		
+	}
 
 	@PostMapping(path = "/book")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public String bookTicket() {
-		
 		String booking_id = bookingRepository.save(booking).getBooking_id();
 		booking=null;
 		passengers=null;

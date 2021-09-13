@@ -14,13 +14,13 @@ public class Flight {
 	private String from;
 	private String to;
 	private int seats;
-	private double cost;
+	private int cost;
 
 	public Flight() {
 
 	}
 
-	public Flight(String flight_id, String airways_id, LocalDate date, String from, String to, int seats, double cost) {
+	public Flight(String flight_id, String airways_id, LocalDate date, String from, String to, int seats, int cost) {
 		super();
 		this.flight_id = flight_id;
 		this.airways = airways_id;
@@ -45,12 +45,12 @@ public class Flight {
 		this.flight_id = flight_id;
 	}
 
-	public String getAirways_id() {
+	public String getAirways() {
 		return airways;
 	}
 
-	public void setAirways_id(String airways_id) {
-		this.airways = airways_id;
+	public void setAirways(String airways) {
+		this.airways = airways;
 	}
 
 	public LocalDate getDate() {
@@ -85,11 +85,11 @@ public class Flight {
 		this.seats = seats;
 	}
 
-	public double getCost() {
+	public int getCost() {
 		return cost;
 	}
 
-	public void setCost(double cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
 
