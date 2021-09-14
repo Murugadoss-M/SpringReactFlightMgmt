@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -98,13 +97,23 @@ public class AdminController {
 		return bookingRepository.findAll();
 	}
 
-	@PostMapping("/delete/booking")
+	@PostMapping("/cancel/booking")
 	@CrossOrigin(origins = "http://localhost:3000")
-	public void cancelBooking(@RequestParam("id") String id) {
+	public List<Booking> cancelBooking(@RequestParam("id") String id) {
 		Optional<Booking> findById = bookingRepository.findById(id);
 		Booking booking = findById.get();
-		booking.setCancelled(true);
+		booking.setCancelled("true");
 		bookingRepository.save(booking);
+		return bookingRepository.findAll();
+	}
+	@PostMapping("/activate/booking")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public List<Booking> activateBooking(@RequestParam("id") String id) {
+		Optional<Booking> findById = bookingRepository.findById(id);
+		Booking booking = findById.get();
+		booking.setCancelled("false");
+		bookingRepository.save(booking);
+		return bookingRepository.findAll();
 	}
 
 }

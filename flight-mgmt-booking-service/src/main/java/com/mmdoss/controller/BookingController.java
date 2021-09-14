@@ -78,7 +78,7 @@ public class BookingController {
 		}
 		booking.setPassengers(passenger);
 		booking.setPrice((passengers.size()) * flight.getCost());
-		booking.setCancelled(false);
+		booking.setCancelled("false");
 		return booking;
 	}
 	
@@ -96,6 +96,20 @@ public class BookingController {
 		booking=new Booking();
 		passengers=new ArrayList<>();
 		return booking_id;
+	}
+	
+	@PostMapping("/user/booking")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public List<Booking> getUserBooking(@RequestParam("username")String name){
+		return bookingRepository.findByUsername(name);
+	}
+	@PostMapping("/cancel")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public void cancelticket(@RequestParam("booking_id")String id) {
+		Optional<Booking> findById = bookingRepository.findById(id);
+		Booking booking2 = findById.get();
+		booking2.setCancelled("true");
+		bookingRepository.save(booking2);
 	}
 	
 }

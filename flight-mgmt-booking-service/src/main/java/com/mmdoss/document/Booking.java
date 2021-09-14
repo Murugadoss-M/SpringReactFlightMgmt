@@ -16,7 +16,7 @@ public class Booking {
 	private LocalDate date;
 	private Passenger[] passengers;
 	private int price;
-	private boolean isCancelled;
+	private String isCancelled;
 
 	public Booking() {
 	}
@@ -25,14 +25,14 @@ public class Booking {
 		this.username = username;
 		this.flight_id = flight_id;
 		this.passengers = passengers;
-		isCancelled=false;
+		isCancelled="false";
 	}
 
-	public boolean isCancelled() {
+	public String isCancelled() {
 		return isCancelled;
 	}
 
-	public void setCancelled(boolean isCancelled) {
+	public void setCancelled(String isCancelled) {
 		this.isCancelled = isCancelled;
 	}
 
