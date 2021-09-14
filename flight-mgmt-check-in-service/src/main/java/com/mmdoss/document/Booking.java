@@ -16,6 +16,15 @@ public class Booking {
 	private LocalDate date;
 	private Passenger[] passengers;
 	private double price;
+	private boolean isCancelled;
+
+	public boolean isCancelled() {
+		return isCancelled;
+	}
+
+	public void setCancelled(boolean isCancelled) {
+		this.isCancelled = isCancelled;
+	}
 
 	public Booking() {
 	}

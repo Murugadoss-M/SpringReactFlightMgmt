@@ -45,7 +45,6 @@ public class SearchController {
 	@PostMapping("/id")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public Flight getFlight(@RequestParam("id")String id) {
-		System.out.println(id);
 		Optional<Flight> findById = flightRepository.findById(id);
 		Flight flight = findById.get();
 		return flight;
