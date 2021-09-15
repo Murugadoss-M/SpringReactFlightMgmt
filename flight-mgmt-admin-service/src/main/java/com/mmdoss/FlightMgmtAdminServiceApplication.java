@@ -9,7 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.mmdoss.document.Airport;
 import com.mmdoss.repository.AirportRepository;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
+@EnableSwagger2
 public class FlightMgmtAdminServiceApplication implements CommandLineRunner{
 
 	@Autowired
